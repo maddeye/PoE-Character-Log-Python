@@ -1,4 +1,0 @@
-request
-black
-flake8
-mypy
