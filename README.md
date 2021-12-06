@@ -57,6 +57,12 @@ Goto http://localhost:8080 and look at your website!
 - Sveltekit
 - Docker
 
+## Screenshots
+
+![Landing Page](/assets/Screenshot.png)
+
+![Character Screen](/assets/Screenshot2.png)
+
 ## Known Issues
 
 If someone creates multiple characters with the same name, data from all those characters will be gathered into a single histroy.
