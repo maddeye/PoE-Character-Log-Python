@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  logger:
+    build:
+      context: backend
+      dockerfile: Dockerfile.Logger
+    restart: unless-stopped
+    environment:
+      - SETTINGS_PATH=/app/config/settings.json
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config:/app/config
+    command: bash -c "python -m POEClog"
+
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile.Api
+    restart: unless-stopped
+    environment:
+      - PORT=8000
+      - MAX_WORKERS=10
+    ports:
+      - "8000:8000"
+    expose:
+      - 8000
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    command: bash -c "uvicorn POEClogApi.api:app --host 0.0.0.0 --port 8000 --workers $${MAX_WORKERS}"
+
+  frontend:
+    build: website
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend

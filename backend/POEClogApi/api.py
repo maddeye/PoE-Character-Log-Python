@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from POEClogDatabase import Database
 from POEClogApi.logger import Logger
 
-app = FastAPI(title="POEClogApi")
+app = FastAPI()
 app.add_middleware(CORSMiddleware, 
     allow_origins=["*"],
     allow_credentials=True,
@@ -17,6 +17,9 @@ app.add_middleware(CORSMiddleware,
 logger = Logger()
 db = Database(logger)
 
+@app.get("/")
+def root():
+    return "Healthy"
 
 @app.get("/api/get-char/{character_name}")
 @app.get("/api/get-char/{character_name}/{level}")

@@ -4,7 +4,9 @@
 
 	import { getData } from '$lib/stores/fetch';
 
-	const response = getData('http://localhost:5000/api/list');
+	const baserUrl = import.meta.env.VITE_APP_BACKEND_URL;
+
+	const response = getData(`${baserUrl}list`);
 </script>
 
 {#await $response}

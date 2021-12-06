@@ -4,7 +4,9 @@
 	export async function load({ page, fetch }) {
 		const { slug } = page.params;
 
-		let history = await getData(`http://localhost:5000/api/history/${slug}`);
+		const baserUrl = import.meta.env.VITE_APP_BACKEND_URL;
+
+		let history = await getData(`${baserUrl}history/${slug}`);
 
 		return {
 			props: { history }
