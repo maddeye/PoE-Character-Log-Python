@@ -39,8 +39,8 @@ class Database:
                 .filter(Character.name == character_name)
                 .first()
             )
-            if char:
-                session.expunge(char)
+            
+            session.expunge_all()
 
             return char
 
@@ -56,8 +56,8 @@ class Database:
                 .filter(Character.name == character_name, Character.level == level)
                 .first()
             )
-            if char:
-                session.expunge(char)
+            
+            session.expunge_all()
 
             return char
 
@@ -68,10 +68,9 @@ class Database:
         session: Session
 
         with self.db_session() as session:
-            chars: List[Character] = session.query(Character).all()
-            if chars:
-                session.expunge(chars)
-
+            chars = session.query(Character).all()
+            
+            session.expunge_all()
             return chars
 
     def get_history(self, character_name: str) -> List[Character]:
@@ -82,8 +81,8 @@ class Database:
             history: List[Character] = (
                 session.query(Character).filter(Character.name == character_name).all()
             )
-            if history:
-                session.expunge(history)
+            
+            session.expunge_all()
 
             return history
 

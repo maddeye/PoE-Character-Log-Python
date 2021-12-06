@@ -24,6 +24,7 @@ socketTrans = {
     "BodyArmour": "Body Armour",
     "Helm": "Helmet",
     "Flask": "Flask",
+    "Trinket": "Tinket"
 }
 
 rarity = ("NORMAL", "MAGIC", "RARE", "UNIQUE")
@@ -155,14 +156,14 @@ def make_xml(character_history: List[dict]) -> str:
         lltree = 0
 
         nodes = ",".join(
-            str(node) for node in json.loads(character_history[e]["passives"])
+            str(node) for node in json.loads(character_history[e]["passives"])["hashes"]
         )
 
-        if level - lltree >= config.get("levelstep") or len(character_history) - e <= 1:
+        if level - lltree >= config.get("levelstep") or len(character_history) - e <= 0:
             id = root.createElement("Spec")
             lltree = level
 
-            id.setAttribute("title", f"{e} - Level {level}")
+            id.setAttribute("title", f"Level {level}")
             id.setAttribute(
                 "ascendClassId", str(character_history[e]["ascendancyClass"])
             )

@@ -47,7 +47,7 @@ class Character(Base):
         self.pob = pob
 
     def __init__(self, account_name: str):
-        self.account_name = account_name
+        self.account = account_name
 
     def info(self):
         return {

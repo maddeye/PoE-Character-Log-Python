@@ -69,10 +69,14 @@ class Screener:
     def scan(self):
         try:
             for account in config.get("accounts"):
+
                 characters_list = config.get("characters")
 
                 for char in self.get_chars(account):
-                    if characters_list != [] and char not in characters_list:
+                    if characters_list != [] and char['name'] not in characters_list:
+                        continue
+
+                    if char['level'] <= config.get("minlevel") or char['level'] > config.get("maxlevel"):
                         continue
 
                     char["passives"] = json.dumps(

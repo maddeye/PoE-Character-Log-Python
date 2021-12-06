@@ -1,0 +1,53 @@
+@import 'style/icon.postcss';
+@import 'style/bigicon.postcss';
+@import 'style/ui.postcss';
+@import 'style/rarity.postcss';
+
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+	@apply w-full h-full;
+}
+
+body {
+	@apply h-full w-full;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background: #000 url('https://pathofexile.com/image/layout/scourge-bg.jpg?1636421981201')
+		no-repeat fixed top center;
+	background-size: contain;
+}
+
+#svelte {
+	@apply w-full;
+}
+
+header {
+	@apply w-full h-16 text-white bg-secondary p-2 flex space-x-2 justify-center items-center;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1 {
+	@apply p-1 text-2xl;
+}
+
+header img {
+	@apply h-14;
+}
+
+.content {
+	@apply w-full md:w-10/12 md:mx-auto drop-shadow-lg;
+}
+
+.wrapper {
+	@apply bg-secondary rounded-md text-white;
+}
+
+.spinner {
+	@apply w-full h-full bg-secondary flex justify-center items-center;
+}

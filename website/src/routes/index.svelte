@@ -1,16 +1,19 @@
 <script>
-	import { getData } from '$lib/fetcher.js';
+	import CharacterList from '$lib/components/CharacterList.svelte';
+	import LoadingSpinner from '$lib/components/LoadingSpinner.svelte';
 
-	const response = getData('http://localhost:5000/api/get-char/BewareStormisComming');
+	import { getData } from '$lib/stores/fetch';
+
+	const response = getData('http://localhost:5000/api/list');
 </script>
 
 {#await $response}
-	<p>Loading...</p>
+	<div class="spinner">
+		<LoadingSpinner />
+	</div>
 {:then data}
-	<ul>
-		<li>Name: {data.name}</li>
-		<li>POB: <input type="text" value={data.pob} /></li>
-	</ul>
-{:catch}
-	<p>There was an error</p>
+	<CharacterList characters={data} />
+{:catch err}
+	<p>Error</p>
+	<p>{err.message}</p>
 {/await}
