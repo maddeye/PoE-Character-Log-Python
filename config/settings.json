@@ -1,0 +1,9 @@
+{
+  "accounts": ["Zizaran"],
+  "characters": [],
+  "shortsleep": 1,
+  "longsleep": 5,
+  "maxlevel": 100,
+  "minlevel": 1,
+  "levelstep": 1
+}
