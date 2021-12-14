@@ -48,6 +48,24 @@ docker-compose -f docker-compose.yml up -d
 
 Goto http://localhost:8080 and look at your website!
 
+## Configure
+
+Change the config file in config/settings.json
+
+Accounts: - List of every account which should be logged. - Cannot be empty
+
+Character: - List of all logged characters within the aboved listed accounts - When empty every character will be logged
+
+Shortsleep: - Waiting time when connection failed ( in seconds )
+
+Longsleep: - Waiting time between character logs ( in seconds )
+
+MaxLevel: - Maximum level of characters to get logged
+
+MinLevel: - Minimum level of characters to get logged
+
+Levelstep: - Minimum level differentce of characters to get logged
+
 ## Tech Stack
 
 - Python
